@@ -1,0 +1,8 @@
+config IO_SAMPLES
+        bool "IO samples"
+        default y
+
+config AIO_SAMPLES
+        bool "AIO samples"
+        depends on USE_AIO && IO_SAMPLES
+        default y

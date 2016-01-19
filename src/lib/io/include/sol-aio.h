@@ -26,6 +26,68 @@ extern "C" {
 #endif
 
 /**
+ * @example aio-reader.c
+ */
+
+/**
+ * @page aio-reader-example Basic usage
+ * @dontinclude aio-reader.c
+ *
+ * This example shows how to open an AIO device/pin and output it's
+ * value to 'stdout' each half second.
+ *
+ * To see the full source for this example, click here:
+ * @ref aio-reader.c
+ *
+ * To use an Analog-to-Digital converter in Soletta, first we have
+ * to provide the device number and pin that we want to use:
+ *
+ * @skip atoi
+ * @until SOL_NULL_CHECK
+ *
+ * This will return the handle object needed by the API methods to execute
+ * actions on the given @c <device,pin>.
+ *
+ * Now, we want to take action every 500ms, so lets create a timer
+ * to do this:
+ *
+ * @skipline sol_timeout_add
+ *
+ * And write the code that reads the sensor inside @c _on_timeout.
+ *
+ * @dontinclude aio-reader.c
+ * @skip _on_timeout
+ * @until }
+ *
+ * Pay attention that Soletta's AIO API is asynchronous, so first we have to check
+ * that our handle isn't busy dealing with a previous requests. If it is, we will
+ * have to skip the read this time.
+ *
+ * Also note that we are the only consumer of this handle (not the final resource)
+ * that is why we can have @ref sol_aio_busy followed by @ref sol_aio_get_value
+ * without risk of TOCTOU. If this handle were shared for any given reason, than
+ * a special care will to avoid a TOCTOU is necessary.
+ *
+ * @dontinclude aio-reader.c
+ * @skip sol_aio_busy
+ * @until return
+ *
+ * Now we can request a ready, but @ref sol_aio_get_value don't actually read
+ * the sensor value, but makes a read request.
+ *
+ * @dontinclude aio-reader.c
+ * @skip sol_aio_get_value
+ * @until }
+ *
+ * We need to provide a second callback that will receive sensor data when
+ * it's ready and print it:
+ *
+ * @dontinclude aio-reader.c
+ * @skip _read_cb
+ * @until }
+ */
+
+/**
  * @file
  * @brief These routines are used for analog I/O access (reading
  * from analog-to-digital converters) under Soletta.
@@ -36,6 +98,8 @@ extern "C" {
  * @ingroup IO
  *
  * @brief Analog I/O API for Soletta.
+ *
+ * @li @ref aio-reader-example
  *
  * @{
  */
