@@ -6,3 +6,8 @@ config AIO_SAMPLES
         bool "AIO samples"
         depends on USE_AIO && IO_SAMPLES
         default y
+
+config GPIO_SAMPLES
+        bool "GPIO samples"
+        depends on USE_GPIO && IO_SAMPLES
+        default y

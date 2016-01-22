@@ -28,6 +28,15 @@ extern "C" {
 #endif
 
 /**
+ * @example gpio-reader.c
+ * @example gpio-writer.c
+ */
+
+/**
+ * @page gpio-basic-usage Basic Usage
+ */
+
+/**
  * @file
  * @brief These routines are used for GPIO access under Soletta.
  */
@@ -45,6 +54,8 @@ extern "C" {
  * @ingroup IO
  *
  * @brief GPIO (General Purpose Input/Output) API for Soletta.
+ *
+ * @li @ref gpio-basic-usage
  *
  * @{
  */
