@@ -65,6 +65,8 @@ extern "C" {
  * @li @ref Utils
  * @li @ref WorkerThread
  *
+ * And a set of examples can be found <a href="examples.html">here</a>.
+ *
  * Please see the @ref authors page for contact details.
  */
 
