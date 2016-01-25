@@ -10,3 +10,6 @@ sample-pwm-$(PWM_SAMPLES) := pwm.c
 
 sample-$(SPI_SAMPLES) += spi
 sample-spi-$(SPI_SAMPLES) := spi.c
+
+sample-$(UART_SAMPLES) += uart
+sample-uart-$(UART_SAMPLES) := uart.c

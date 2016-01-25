@@ -21,3 +21,8 @@ config SPI_SAMPLES
         bool "SPI samples"
         depends on USE_SPI && IO_SAMPLES
         default y
+
+config UART_SAMPLES
+        bool "UART samples"
+        depends on USE_UART && IO_SAMPLES
+        default y
