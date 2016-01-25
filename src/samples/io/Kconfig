@@ -11,3 +11,8 @@ config GPIO_SAMPLES
         bool "GPIO samples"
         depends on USE_GPIO && IO_SAMPLES
         default y
+
+config PWM_SAMPLES
+        bool "PWM samples"
+        depends on USE_PWM && IO_SAMPLES
+        default y
